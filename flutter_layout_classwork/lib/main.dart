@@ -21,7 +21,7 @@ class MyApp extends StatelessWidget {
               height: 240,
               fit: BoxFit.cover,
             ),
-            TitleWidget(),
+            TitleSection(),
             Divider(height: 1.0, color: Colors.black,),
             ButtonSection(),
             Divider(height: 1.0, color: Colors.black,),
@@ -31,11 +31,10 @@ class MyApp extends StatelessWidget {
       ),
     );
   }
-
-
 }
 
-class _TitleWidgetState extends State<TitleWidget> {
+
+class _FavoriteWidgetState extends State<FavoriteWidget> {
   bool _isFavorited = true;
   int _favoriteCount = 41;
 
@@ -54,63 +53,69 @@ class _TitleWidgetState extends State<TitleWidget> {
   @override
   Widget build(BuildContext context) {
 
-    Widget titleSection = Container(
-      padding: const EdgeInsets.all(32),
-      child: Row(
-        children: <Widget>[
-          Expanded(
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: <Widget>[
-                  Container(
-                      padding: const EdgeInsets.only(bottom: 8),
-                      child: Text(
-                        (_isFavorited?'EUNJUN JANG':'oeschinen Lake Campground'),
-                        style: TextStyle(
-                          fontWeight: FontWeight.bold,
-                        ),
-                      )
-                  ),
-                  Text(
-                    (_isFavorited?'21800633':'oeschinen Lake Campground'),
-                    style: TextStyle(
-                      color: Colors.grey[500],
-                    ),
-                  )
-                ],
-              )
-          ),
-          Row(
-            mainAxisSize: MainAxisSize.min,
-            children: <Widget>[
-              Container(
-                  padding: EdgeInsets.all(0),
-                  child: IconButton(
-                    icon: (_isFavorited ? Icon(Icons.star) : Icon(Icons.star_border)),
-                    color: Colors.red[500],
-                    onPressed: _toggleFavorite,
-                  )
-              ),
-              SizedBox(
-                  width: 18,
-                  child: Container(
-                      child: Text("$_favoriteCount")
-                  )
-              )
-            ],
-          ),
-        ],
-      ),
+    return Row(
+      mainAxisSize: MainAxisSize.min,
+      children: <Widget>[
+        Container(
+            padding: EdgeInsets.all(0),
+            child: IconButton(
+              icon: (_isFavorited ? Icon(Icons.star) : Icon(Icons.star_border)),
+              color: Colors.red[500],
+              onPressed: _toggleFavorite,
+            )
+        ),
+        SizedBox(
+            width: 18,
+            child: Container(
+                child: Text("$_favoriteCount")
+            )
+        )
+      ],
     );
-
-    return titleSection;
   }
 }
 
-class TitleWidget extends StatefulWidget {
+class FavoriteWidget extends StatefulWidget {
   @override
-  _TitleWidgetState createState() => _TitleWidgetState();
+  _FavoriteWidgetState createState() => _FavoriteWidgetState();
 }
+
+class TitleSection extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+        padding: const EdgeInsets.all(32),
+        child: Row(
+          children: <Widget>[
+            Expanded(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: <Widget>[
+                Container(
+                    padding: const EdgeInsets.only(bottom: 8),
+                    child: Text(
+                      'EUNJUN JANG',
+                      style: TextStyle(
+                        fontWeight: FontWeight.bold,
+                      ),
+                    )
+                ),
+                Text(
+                  '21800633',
+                  style: TextStyle(
+                    color: Colors.grey[500],
+                  ),
+                )
+              ],
+            )
+            ),
+            FavoriteWidget(),
+          ]
+        )
+    );
+  }
+}
+
 
 class ButtonSection extends StatelessWidget {
   Column _buildButtonColumn(Color color, IconData icon, String label) {
