@@ -60,16 +60,26 @@ class _LoginPageState extends State<LoginPage> {
             ),
             ButtonBar(
               children: <Widget>[
-                // TODO: Add a beveled rectangular border to CANCEL (103)
                 FlatButton(
-                  child: Text('CANCEL'),
+                  child: Text('CANCEL', ),
+                  textColor: Colors.black,
                   onPressed: () {
                     _usernameController.clear();
                     _passwordController.clear();
                   },
                 ),
-                // TODO: Add an elevation to NEXT (103)
-                // TODO: Add a beveled rectangular border to NEXT (103)
+
+                FlatButton(
+                  child: Text('Sign Up'),
+                  textColor: Colors.black,
+                  onPressed: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => SignUpPage())
+                    );
+                  },
+                ),
+
                 RaisedButton(
                   child: Text('NEXT'),
                   onPressed: () {
@@ -85,4 +95,95 @@ class _LoginPageState extends State<LoginPage> {
   }
 }
 
-// TODO: Add AccentColorOverride (103)
+
+class SignUpPage extends StatefulWidget {
+  @override
+  State<StatefulWidget> createState() => SignUpPageState();
+}
+
+class SignUpPageState extends State<SignUpPage> {
+  final _formKey = GlobalKey<FormState>();
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      body: Container(
+        margin: EdgeInsets.only(top: 80.0),
+        padding: const EdgeInsets.symmetric(horizontal: 24.0),
+        child: Form(
+            key: _formKey,
+            child: Column(
+                children: <Widget>[
+                  TextFormField(
+                    decoration: InputDecoration(
+                      labelText: 'Username',
+                      filled: true,
+                    ),
+                    validator: (value) {
+                      if (value.isEmpty) {
+                        return 'Please enter Username';
+                      }
+                      return null;
+                    },
+                  ),
+                  SizedBox(height: 12.0,),
+                  TextFormField(
+                    decoration: InputDecoration(
+                      labelText: 'Password',
+                      filled: true,
+                    ),
+                    validator: (value) {
+                      if (value.isEmpty) {
+                        return 'Please enter Password';
+                      }
+                      return null;
+                    },
+                  ),
+                  SizedBox(height: 12.0,),
+                  TextFormField(
+                    decoration: InputDecoration(
+                      labelText: 'Confirm Password',
+                      filled: true,
+                    ),
+                    validator: (value) {
+                      if (value.isEmpty) {
+                        return 'Please enter Confirm Password';
+                      }
+                      return null;
+                    },
+                  ),
+                  SizedBox(height: 12.0,),
+                  TextFormField(
+                    decoration: InputDecoration(
+                      labelText: 'Email Address',
+                      filled: true,
+                    ),
+                    validator: (value) {
+                      if (value.isEmpty) {
+                        return 'Please enter Email Address';
+                      }
+                      return null;
+                    },
+                  ),
+                  SizedBox(height: 12.0,),
+
+                  ButtonBar(
+                    children: <Widget>[RaisedButton(
+                      onPressed: () {
+                        if (_formKey.currentState.validate()) {
+                          Navigator.pop(context);
+                        }
+                      },
+                      child: Text('SIGN UP'),
+                    ),],
+                  ),
+                ]
+            )
+        ),
+      ),
+    );
+  }
+
+}
+
+

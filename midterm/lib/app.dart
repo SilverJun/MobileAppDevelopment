@@ -47,6 +47,3 @@ class ShrineApp extends StatelessWidget {
     );
   }
 }
-
-// TODO: Build a Shrine Theme (103)
-// TODO: Build a Shrine Text Theme (103)
