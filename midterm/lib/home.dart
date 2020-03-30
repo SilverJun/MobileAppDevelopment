@@ -71,21 +71,23 @@ class HomePage extends StatelessWidget {
     }).toList();
   }
 
+  ListTile _buildDrawerListTile(context, IconData icon, String text, String route)
+  {
+    return ListTile(
+      leading: Icon(icon, color: Theme.of(context).primaryColor,),
+      title: Text(text),
+      onTap: () {
+        if (route == '/home') Navigator.pop(context);
+        else Navigator.popAndPushNamed(context, route);
+      },
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('SHRINE'),
-        leading: IconButton(
-          icon: Icon(
-            Icons.menu,
-            semanticLabel: 'menu',
-          ),
-          onPressed: () {
-            print('Menu button');
-          },
-        ),
+        title: Text('Main'),
         actions: <Widget>[
           IconButton(
             icon: Icon(
@@ -93,27 +95,54 @@ class HomePage extends StatelessWidget {
               semanticLabel: 'search',
             ),
             onPressed: () {
-              print('Search button');
+              Navigator.pushNamed(context, '/search');
             },
           ),
           IconButton(
             icon: Icon(
-              Icons.tune,
-              semanticLabel: 'filter',
+              Icons.language,
+              semanticLabel: 'website',
             ),
             onPressed: () {
-              print('Filter button');
+              Navigator.pushNamed(context, '/website');
             },
           )
         ],
       ),
-      body: GridView.count(
-        crossAxisCount: 2,
-        padding: EdgeInsets.all(16.0),
-        childAspectRatio: 8.0 / 9.0,
-        children: _buildGridCards(context),
+      body: OrientationBuilder(
+        builder: (context, orientation) => GridView.count(
+          crossAxisCount: orientation==Orientation.landscape?3:2,
+          padding: EdgeInsets.all(16.0),
+          childAspectRatio: 8.0 / 9.0,
+          children: _buildGridCards(context),
+        ),
       ),
       resizeToAvoidBottomInset: false,
+      drawer: Drawer(
+        child: ListView(
+          children: <Widget>[
+            DrawerHeader(
+              child: Flex(
+                direction: Axis.vertical,
+                mainAxisAlignment: MainAxisAlignment.end,
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: <Widget>[
+                  Text('Pages', style: TextStyle(color: Colors.white, fontSize: 24, fontWeight: FontWeight.normal),)
+                ],
+              ),
+              decoration: BoxDecoration(
+                color: Colors.blue,
+              ),
+            ),
+            //search, location_city, language, person
+            _buildDrawerListTile(context, Icons.home, 'Home', '/home'),
+            _buildDrawerListTile(context, Icons.search, 'Search', '/search'),
+            _buildDrawerListTile(context, Icons.location_city, 'Favorite Hotel', '/favorite'),
+            _buildDrawerListTile(context, Icons.language, 'Website', '/website'),
+            _buildDrawerListTile(context, Icons.person, 'My Page', '/mypage'),
+          ],
+        ),
+      ),
     );
   }
 }

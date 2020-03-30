@@ -107,78 +107,80 @@ class SignUpPageState extends State<SignUpPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Container(
-        margin: EdgeInsets.only(top: 80.0),
-        padding: const EdgeInsets.symmetric(horizontal: 24.0),
-        child: Form(
-            key: _formKey,
-            child: Column(
-                children: <Widget>[
-                  TextFormField(
-                    decoration: InputDecoration(
-                      labelText: 'Username',
-                      filled: true,
-                    ),
-                    validator: (value) {
-                      if (value.isEmpty) {
-                        return 'Please enter Username';
-                      }
-                      return null;
-                    },
-                  ),
-                  SizedBox(height: 12.0,),
-                  TextFormField(
-                    decoration: InputDecoration(
-                      labelText: 'Password',
-                      filled: true,
-                    ),
-                    validator: (value) {
-                      if (value.isEmpty) {
-                        return 'Please enter Password';
-                      }
-                      return null;
-                    },
-                  ),
-                  SizedBox(height: 12.0,),
-                  TextFormField(
-                    decoration: InputDecoration(
-                      labelText: 'Confirm Password',
-                      filled: true,
-                    ),
-                    validator: (value) {
-                      if (value.isEmpty) {
-                        return 'Please enter Confirm Password';
-                      }
-                      return null;
-                    },
-                  ),
-                  SizedBox(height: 12.0,),
-                  TextFormField(
-                    decoration: InputDecoration(
-                      labelText: 'Email Address',
-                      filled: true,
-                    ),
-                    validator: (value) {
-                      if (value.isEmpty) {
-                        return 'Please enter Email Address';
-                      }
-                      return null;
-                    },
-                  ),
-                  SizedBox(height: 12.0,),
-
-                  ButtonBar(
-                    children: <Widget>[RaisedButton(
-                      onPressed: () {
-                        if (_formKey.currentState.validate()) {
-                          Navigator.pop(context);
+      body: SafeArea(
+        child: Container(
+          margin: EdgeInsets.only(top: 60.0),
+          padding: const EdgeInsets.symmetric(horizontal: 24.0),
+          child: Form(
+              key: _formKey,
+              child: Column(
+                  children: <Widget>[
+                    TextFormField(
+                      decoration: InputDecoration(
+                        labelText: 'Username',
+                        filled: true,
+                      ),
+                      validator: (value) {
+                        if (value.isEmpty) {
+                          return 'Please enter Username';
                         }
+                        return null;
                       },
-                      child: Text('SIGN UP'),
-                    ),],
-                  ),
-                ]
-            )
+                    ),
+                    SizedBox(height: 12.0,),
+                    TextFormField(
+                      decoration: InputDecoration(
+                        labelText: 'Password',
+                        filled: true,
+                      ),
+                      validator: (value) {
+                        if (value.isEmpty) {
+                          return 'Please enter Password';
+                        }
+                        return null;
+                      },
+                    ),
+                    SizedBox(height: 12.0,),
+                    TextFormField(
+                      decoration: InputDecoration(
+                        labelText: 'Confirm Password',
+                        filled: true,
+                      ),
+                      validator: (value) {
+                        if (value.isEmpty) {
+                          return 'Please enter Confirm Password';
+                        }
+                        return null;
+                      },
+                    ),
+                    SizedBox(height: 12.0,),
+                    TextFormField(
+                      decoration: InputDecoration(
+                        labelText: 'Email Address',
+                        filled: true,
+                      ),
+                      validator: (value) {
+                        if (value.isEmpty) {
+                          return 'Please enter Email Address';
+                        }
+                        return null;
+                      },
+                    ),
+                    SizedBox(height: 12.0,),
+
+                    ButtonBar(
+                      children: <Widget>[RaisedButton(
+                        onPressed: () {
+                          if (_formKey.currentState.validate()) {
+                            Navigator.pop(context);
+                          }
+                        },
+                        child: Text('SIGN UP'),
+                      ),],
+                    ),
+                  ]
+              )
+          ),
         ),
       ),
     );
