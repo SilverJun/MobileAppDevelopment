@@ -129,6 +129,7 @@ class SignUpPageState extends State<SignUpPage> {
                     ),
                     SizedBox(height: 12.0,),
                     TextFormField(
+                      obscureText: true,
                       decoration: InputDecoration(
                         labelText: 'Password',
                         filled: true,
@@ -142,6 +143,7 @@ class SignUpPageState extends State<SignUpPage> {
                     ),
                     SizedBox(height: 12.0,),
                     TextFormField(
+                      obscureText: true,
                       decoration: InputDecoration(
                         labelText: 'Confirm Password',
                         filled: true,

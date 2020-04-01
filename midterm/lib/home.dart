@@ -13,57 +13,94 @@
 // limitations under the License.
 
 import 'package:flutter/material.dart';
-import 'package:intl/intl.dart';
-
-import 'model/products_repository.dart';
-import 'model/product.dart';
+import 'package:midterm/HotelInfo.dart';
 
 class HomePage extends StatelessWidget {
-  List<Card> _buildGridCards(BuildContext context) {
-    List<Product> products = ProductsRepository.loadProducts(Category.all);
 
-    if (products == null || products.isEmpty) {
-      return const <Card>[];
-    }
+  Row _buildStarWidget(int star) {
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.start,
+      crossAxisAlignment: CrossAxisAlignment.center,
+      children: List<Widget>.generate(star, (int index){
+        return Icon(Icons.star, color: Colors.yellow, size: 10,);
+      })
+    );
+  }
+
+  List<Card> _buildGridCards(BuildContext context) {
 
     final ThemeData theme = Theme.of(context);
-    final NumberFormat formatter = NumberFormat.simpleCurrency(
-        locale: Localizations.localeOf(context).toString());
 
-    return products.map((product) {
+    return hotelList.map((product) {
       return Card(
         clipBehavior: Clip.antiAlias,
-        // TODO: Adjust card heights (103)
         child: Column(
+          mainAxisAlignment: MainAxisAlignment.start,
           crossAxisAlignment: CrossAxisAlignment.start,
           children: <Widget>[
             AspectRatio(
               aspectRatio: 18 / 11,
               child: Image.asset(
-                product.assetName,
-                package: product.assetPackage,
+                product.image,
                 fit: BoxFit.fitWidth,
               ),
             ),
-            Expanded(
-              child: Padding(
-                padding: EdgeInsets.fromLTRB(16.0, 12.0, 16.0, 8.0),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: <Widget>[
-                    Text(
-                      product.name,
-                      style: theme.textTheme.title,
-                      maxLines: 1,
-                    ),
-                    SizedBox(height: 8.0),
-                    Text(
-                      formatter.format(product.price),
-                      style: theme.textTheme.body2,
-                    ),
-                  ],
+            Stack(
+              alignment: Alignment.bottomRight,
+              children : <Widget>[
+                Container(
+                  width: 180,
+                  height: 95,
+                  padding: const EdgeInsets.all(8.0),
+                  child: Row(
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: <Widget>[
+                      Padding(
+                        padding: const EdgeInsets.only(top:16.0),
+                        child: Icon(Icons.location_on, color: theme.primaryColor,),
+                      ),
+                      Flexible(
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.start,
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: <Widget>[
+                            _buildStarWidget(product.star),
+                            Text(
+                              product.name,
+                              style: theme.textTheme.title.merge(TextStyle(fontWeight: FontWeight.bold)),
+                              textScaleFactor: 0.8,
+                              maxLines: 1,
+                            ),
+                            SizedBox(height: 8.0),
+
+                            Text(
+                                product.location,
+                                style: theme.textTheme.body2,
+                                textScaleFactor: 0.8,
+                              ),
+
+                            SizedBox(height: 8.0),
+                          ],
+                        ),
+                      ),
+                    ]
+                  ),
                 ),
-              ),
+                Container(
+                  padding: EdgeInsets.all(8.0),
+                  alignment: Alignment.bottomRight,
+                  child: Container(
+                    height: 20,
+                    width: 80,
+                    child: FlatButton(
+                      child: Text('more', ),
+                      textColor: theme.primaryColor,
+                      onPressed: () {
+                      },
+                    ),
+                  ),
+                ),
+              ]
             ),
           ],
         ),
