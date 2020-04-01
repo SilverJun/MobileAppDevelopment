@@ -34,23 +34,21 @@ class HomePage extends StatelessWidget {
     return hotelList.map((product) {
       return Card(
         clipBehavior: Clip.antiAlias,
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.start,
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: <Widget>[
-            AspectRatio(
-              aspectRatio: 18 / 11,
-              child: Image.asset(
-                product.image,
-                fit: BoxFit.fitWidth,
-              ),
-            ),
-            Stack(
-              alignment: Alignment.bottomRight,
-              children : <Widget>[
+        child: Stack(
+          alignment: Alignment.bottomRight,
+          children : <Widget>[
+            Column(
+              mainAxisAlignment: MainAxisAlignment.start,
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: <Widget>[
+                AspectRatio(
+                  aspectRatio: 18 / 11,
+                  child: Image.asset(
+                    product.image,
+                    fit: BoxFit.fitWidth,
+                  ),
+                ),
                 Container(
-                  width: 180,
-                  height: 95,
                   padding: const EdgeInsets.all(8.0),
                   child: Row(
                     crossAxisAlignment: CrossAxisAlignment.center,
@@ -72,13 +70,11 @@ class HomePage extends StatelessWidget {
                               maxLines: 1,
                             ),
                             SizedBox(height: 8.0),
-
                             Text(
                                 product.location,
                                 style: theme.textTheme.body2,
                                 textScaleFactor: 0.8,
                               ),
-
                             SizedBox(height: 8.0),
                           ],
                         ),
@@ -86,21 +82,21 @@ class HomePage extends StatelessWidget {
                     ]
                   ),
                 ),
-                Container(
-                  padding: EdgeInsets.all(8.0),
-                  alignment: Alignment.bottomRight,
-                  child: Container(
-                    height: 20,
-                    width: 80,
-                    child: FlatButton(
-                      child: Text('more', ),
-                      textColor: theme.primaryColor,
-                      onPressed: () {
-                      },
-                    ),
-                  ),
-                ),
               ]
+            ),
+            Positioned(
+              bottom: 6,
+              right: 2,
+              child: Container(
+                height: 20,
+                width: 70,
+                child: FlatButton(
+                  child: Text('more', style: TextStyle(fontSize: 14),),
+                  textColor: theme.primaryColor,
+                  onPressed: () {
+                  },
+                ),
+              ),
             ),
           ],
         ),
