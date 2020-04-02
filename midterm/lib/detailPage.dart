@@ -37,11 +37,13 @@ class DetailPage extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: <Widget>[
                     buildStarWidget(hotel.star, 24),
+                    SizedBox(height: 8.0,),
                     Text(hotel.name, style: Theme.of(context).textTheme.title.merge(TextStyle(color: Color.fromRGBO(42, 88, 149, 1.0), fontWeight: FontWeight.bold)),),
-                    SizedBox(height: 16.0,),
+                    SizedBox(height: 12.0,),
                     Row(
                       children: <Widget>[
                         Icon(Icons.location_on, color: Colors.lightBlue,),
+                        SizedBox(width: 8.0,),
                         Text(hotel.location, style: Theme.of(context).textTheme.subtitle.merge(TextStyle(color: Colors.blueAccent))),
                       ]
                     ),
@@ -49,6 +51,7 @@ class DetailPage extends StatelessWidget {
                     Row(
                       children: <Widget>[
                         Icon(Icons.phone, color: Colors.lightBlue,),
+                        SizedBox(width: 8.0,),
                         Text(hotel.tel, style: Theme.of(context).textTheme.subtitle.merge(TextStyle(color: Colors.blueAccent))),
                       ]
                     ),
