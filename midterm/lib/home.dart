@@ -14,18 +14,19 @@
 
 import 'package:flutter/material.dart';
 import 'package:midterm/HotelInfo.dart';
+import 'package:midterm/detailPage.dart';
 
-class HomePage extends StatelessWidget {
-
-  Row _buildStarWidget(int star) {
-    return Row(
+Row buildStarWidget(int star, double size) {
+  return Row(
       mainAxisAlignment: MainAxisAlignment.start,
       crossAxisAlignment: CrossAxisAlignment.center,
       children: List<Widget>.generate(star, (int index){
-        return Icon(Icons.star, color: Colors.yellow, size: 10,);
+        return Icon(Icons.star, color: Colors.yellow, size: size,);
       })
-    );
-  }
+  );
+}
+
+class HomePage extends StatelessWidget {
 
   List<Card> _buildGridCards(BuildContext context) {
 
@@ -54,7 +55,7 @@ class HomePage extends StatelessWidget {
                     crossAxisAlignment: CrossAxisAlignment.center,
                     children: <Widget>[
                       Padding(
-                        padding: const EdgeInsets.only(top:16.0),
+                        padding: const EdgeInsets.only(top:28.0),
                         child: Icon(Icons.location_on, color: theme.primaryColor,),
                       ),
                       Flexible(
@@ -62,7 +63,7 @@ class HomePage extends StatelessWidget {
                           mainAxisAlignment: MainAxisAlignment.start,
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: <Widget>[
-                            _buildStarWidget(product.star),
+                            buildStarWidget(product.star, 10.0),
                             Text(
                               product.name,
                               style: theme.textTheme.title.merge(TextStyle(fontWeight: FontWeight.bold)),
@@ -94,6 +95,7 @@ class HomePage extends StatelessWidget {
                   child: Text('more', style: TextStyle(fontSize: 14),),
                   textColor: theme.primaryColor,
                   onPressed: () {
+                    Navigator.push(context, MaterialPageRoute(builder: (context)=>DetailPage(hotel: product,)));
                   },
                 ),
               ),
