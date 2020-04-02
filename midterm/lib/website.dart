@@ -1,15 +1,29 @@
 
+import 'dart:async';
+import 'dart:convert';
 import 'package:flutter/material.dart';
+import 'package:webview_flutter/webview_flutter.dart';
 
-class WebSitePage extends StatelessWidget {
+class WebSitePage extends StatefulWidget {
+  @override
+  State<StatefulWidget> createState() => WebSiteState();
+
+}
+
+class WebSiteState extends State<WebSitePage> {
   @override
   Widget build(BuildContext context) {
-    // TODO: implement build
     return Scaffold(
       appBar: AppBar(title: Text(''),),
-      body: Center(
-        child: Text('WebSitePage'),
+      body: WebView(
+        initialUrl: 'https://www.handong.edu',
+        javascriptMode: JavascriptMode.unrestricted,
+        onPageFinished: (String url) {
+          print('finished:' + url);
+        },
       ),
     );
   }
+
+
 }
