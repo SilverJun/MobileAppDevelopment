@@ -44,9 +44,12 @@ class HomePage extends StatelessWidget {
               children: <Widget>[
                 AspectRatio(
                   aspectRatio: 18 / 11,
-                  child: Image.asset(
-                    product.image,
-                    fit: BoxFit.fitWidth,
+                  child: Hero(
+                    tag: product.image,
+                    child: Image.asset(
+                      product.image,
+                      fit: BoxFit.fitWidth,
+                    ),
                   ),
                 ),
                 Container(

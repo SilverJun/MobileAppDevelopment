@@ -19,10 +19,13 @@ class DetailPage extends StatelessWidget {
             children: <Widget>[
               Stack(
                 children: <Widget>[
-                  Image.asset(
-                    hotel.image,
-                    width: MediaQuery.of(context).size.width,
-                    fit: BoxFit.cover,
+                  Hero(
+                    tag: hotel.image,
+                    child: Image.asset(
+                      hotel.image,
+                      width: MediaQuery.of(context).size.width,
+                      fit: BoxFit.cover,
+                    ),
                   ),
                   Positioned(
                     top: 10,
