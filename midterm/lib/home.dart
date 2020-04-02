@@ -95,7 +95,7 @@ class HomePage extends StatelessWidget {
                   child: Text('more', style: TextStyle(fontSize: 14),),
                   textColor: theme.primaryColor,
                   onPressed: () {
-                    Navigator.push(context, MaterialPageRoute(builder: (context)=>DetailPage(hotel: product,)));
+                    Navigator.push(context, MaterialPageRoute(builder: (context)=>DetailPage(index: hotelList.indexOf(product),)));
                   },
                 ),
               ),

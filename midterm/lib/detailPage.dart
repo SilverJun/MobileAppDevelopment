@@ -4,13 +4,13 @@ import 'package:midterm/home.dart';
 import 'package:midterm/HotelInfo.dart';
 
 class DetailPage extends StatelessWidget {
-  final Hotel hotel;
+  final int index;
 
-  DetailPage({this.hotel});
+  DetailPage({this.index});
 
   @override
   Widget build(BuildContext context) {
-
+    var hotel = hotelList[index];
     return Scaffold(
       appBar: AppBar(title: Text('Detail'),),
       body: ListView(
@@ -27,7 +27,7 @@ class DetailPage extends StatelessWidget {
                   Positioned(
                     top: 10,
                     right: 10,
-                    child: FavoriteIconWidget(hotel: hotel,)
+                    child: FavoriteIconWidget(index)
                   )
                 ]
               ),
@@ -69,11 +69,12 @@ class DetailPage extends StatelessWidget {
 }
 
 class FavoriteIconWidget extends StatefulWidget {
-  final Hotel hotel;
+  Hotel hotel;
   bool isContained;
 
-  FavoriteIconWidget({this.hotel})
+  FavoriteIconWidget(int index)
   {
+    hotel = hotelList[index];
     print(favoriteList);
     isContained = favoriteList.contains(hotel);
   }
