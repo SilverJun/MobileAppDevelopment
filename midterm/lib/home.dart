@@ -76,7 +76,7 @@ class HomePage extends StatelessWidget {
                             SizedBox(height: 8.0),
                             Text(
                                 product.location,
-                                style: theme.textTheme.body2,
+                                style: theme.textTheme.subtitle,
                                 textScaleFactor: 0.8,
                               ),
                             SizedBox(height: 8.0),

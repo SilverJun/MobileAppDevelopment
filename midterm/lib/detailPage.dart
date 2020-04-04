@@ -81,7 +81,6 @@ class FavoriteIconWidget extends StatefulWidget {
   FavoriteIconWidget(int index)
   {
     hotel = hotelList[index];
-    print(favoriteList);
     isContained = favoriteList.contains(hotel);
   }
 
