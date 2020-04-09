@@ -17,12 +17,13 @@ class MyPageState extends State<MyPage> {
       body: Column(
         children: <Widget>[
           SizedBox(height: 16.0,),
+          favoriteList.length==0?Center(child: Text("No there is element in favorite list!"),):
           CarouselSlider(
             viewportFraction: 0.9,
             aspectRatio: 2.0,
             autoPlay: true,
             enlargeCenterPage: true,
-            items: hotelList.map( (hotel) {
+            items: favoriteList.map( (hotel) {
                 return Container(
                   margin: EdgeInsets.all(5.0),
                   child: ClipRRect(
