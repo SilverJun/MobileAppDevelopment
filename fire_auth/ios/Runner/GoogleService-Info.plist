@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CLIENT_ID</key>
+	<string>490737841969-le6gk3m41r3sc1h2dlnf83qvl9qj2kfo.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.490737841969-le6gk3m41r3sc1h2dlnf83qvl9qj2kfo</string>
+	<key>API_KEY</key>
+	<string>AIzaSyD6yvyRD1YwtLao_W-gDqSbkO2hiqwKnQ4</string>
+	<key>GCM_SENDER_ID</key>
+	<string>490737841969</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>com.silverjun.babynamer</string>
+	<key>PROJECT_ID</key>
+	<string>baby-namer-app-db</string>
+	<key>STORAGE_BUCKET</key>
+	<string>baby-namer-app-db.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:490737841969:ios:b01a85b5d11986c0212210</string>
+	<key>DATABASE_URL</key>
+	<string>https://baby-namer-app-db.firebaseio.com</string>
+</dict>
+</plist>
