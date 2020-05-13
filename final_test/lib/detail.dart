@@ -151,6 +151,7 @@ class DetailPageState extends State<DetailPage> {
                   if (widget.product.uid == appProfile.user.uid) { // can delete
                     print("Can delete!");
                     await Firestore.instance.collection('product').document(widget.product.uuid).delete();
+                    Navigator.pop(context);
                   }
                   else { //can't edit
                     Scaffold.of(context).showSnackBar(SnackBar(content: Text("You don't have permission to delete this product.")));
